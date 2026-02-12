@@ -1026,11 +1026,8 @@
         if (contentType.includes('application/json') || data.trim().startsWith('[')) {
           // JSON format from Google Apps Script
           booksData = JSON.parse(data);
-          // Ensure JSON books have IDs
-          booksData = booksData.map(b => {
-            if (!b.id) b.id = uid();
-            return b;
-          });
+          // Ensure JSON books have IDs (avoid mutation)
+          booksData = booksData.map(b => b.id ? b : { ...b, id: uid() });
           console.log('Parsed JSON data from Google Apps Script');
         } else {
           // CSV format from published sheet
