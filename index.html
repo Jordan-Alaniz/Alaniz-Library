@@ -937,6 +937,10 @@
             normalized[mappedField] = value;
           }
         }
+        // Ensure each book has an ID (preserve existing or generate new)
+        if (!normalized.id) {
+          normalized.id = uid();
+        }
         return normalized;
       });
     }
@@ -1035,6 +1039,14 @@
           console.warn('Google Sheets returned no data');
           return;
         }
+        
+        // Ensure all books have IDs (preserve existing or generate new)
+        booksData = booksData.map(b => {
+          if (!b.id) {
+            b.id = uid();
+          }
+          return b;
+        });
         
         // Update the books array and render the books
         books = booksData;
