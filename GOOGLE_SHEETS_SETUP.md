@@ -168,6 +168,8 @@ This method is simpler but may not work in all browsers due to CORS restrictions
 ### Note:
 This method may be blocked by browser CORS policies. If you see "Failed to fetch" in the console, use Option 1 instead.
 
+**Important:** Checkout/return functionality will NOT sync to Google Sheets when using the CSV method. This is because CSV URLs are read-only. For shared checkout/return status across all users, you must use Option 1 (Google Apps Script).
+
 ---
 
 ## Option 3: Local Storage Only
@@ -178,6 +180,8 @@ If you don't want to use Google Sheets at all:
 2. Find the line with `const GOOGLE_SHEET_URL = '...'`
 3. Set it to an empty string: `const GOOGLE_SHEET_URL = '';`
 4. The app will work entirely with localStorage
+
+**Note:** With this option, checkout/return status will only be stored locally on each user's device and will not be shared across users.
 
 ---
 
@@ -222,6 +226,18 @@ This means both:
 - Import sample data using the "Import Sample" button
 - Or manually add books using "+ Add Book"
 - Or fix the Google Sheets sync using Option 1
+
+### Checkout/return status not shared across users
+
+If checkout/return changes aren't visible to other users:
+
+1. **Verify you're using Google Apps Script (Option 1):** Checkout/return sync only works with Google Apps Script URLs, not published CSV URLs
+2. **Check the console for errors:** Look for messages like "Sent checkout update to Google Sheets"
+3. **Ensure your Google Sheet has an `id` column:** The Apps Script needs book IDs to update the correct rows
+4. **Have other users refresh the page:** Changes sync on page load
+5. **Check the checkout columns in your Google Sheet:** Verify that `checkedOutByName`, `checkedOutByEmail`, and `checkedOutDate` columns are being updated
+
+If using a published CSV URL (Option 2), checkout/return will only work locally and won't sync.
 
 ---
 
