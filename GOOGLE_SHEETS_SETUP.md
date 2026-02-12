@@ -9,7 +9,10 @@ This method creates a web app that bypasses CORS restrictions and works reliably
 ### Steps:
 
 1. **Open your Google Sheet** with your book data
-   - The first row should contain headers: `isbn`, `title`, `quantity`, `description`, `authors`, `publisher`, `published`, `pages`, `language`, `location`
+   - The first row should contain headers (column names)
+   - Recommended headers: `isbn`, `title`, `quantity`, `description`, `authors`, `publisher`, `published`, `pages`, `language`, `location`
+   - Only `title` is strongly recommended; other fields are optional
+   - Headers are case-insensitive
 
 2. **Create an Apps Script:**
    - In your Google Sheet, go to **Extensions** → **Apps Script**
