@@ -136,7 +136,7 @@ This method creates a web app that bypasses CORS restrictions and works reliably
 
 5. **⚠️ CRITICAL: Update the library app:**
    - Open `index.html` in a text editor
-   - Scroll to near the end of the file (around line 1148)
+   - Scroll to near the end of the file (in the configuration section)
    - Find this line: `const GOOGLE_SHEET_URL = '...'`
    - **Replace the ENTIRE URL** with your Apps Script Web app URL from step 4
    - Example:

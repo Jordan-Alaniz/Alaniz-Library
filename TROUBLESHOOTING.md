@@ -22,7 +22,7 @@ This guide helps you fix common issues with the Alaniz Library app.
 **Step 1: Make sure you have the latest code**
 
 1. Pull the latest version of `index.html` from this repository
-2. The fix was added in commit d5cdc4a
+2. The fix normalizes field names from Apps Script JSON data
 
 **Step 2: Clear Cache and Refresh**
 
@@ -66,7 +66,7 @@ The app is using a CSV URL instead of a Google Apps Script URL. CSV URLs are rea
 **Step 2: Update index.html**
 
 1. Open `index.html` in a text editor
-2. Find this line (near the end of the file, around line 1170):
+2. Find this line (in the configuration section near the end of the file):
    ```javascript
    const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-...';
    ```
