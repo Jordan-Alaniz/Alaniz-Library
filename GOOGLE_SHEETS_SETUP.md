@@ -249,7 +249,7 @@ Your Google Sheet should have these columns (case-insensitive):
 |----|------|-------|----------|-------------|---------|-----------|-----------|-------|----------|----------|------------------|-------------------|----------------|
 | b123abc | 9780132350884 | Clean Code | 1 | A handbook... | Robert C. Martin | Prentice Hall | 2008-08-01 | 464 | English | Shelf A | | | |
 
-**Required columns:** `id`, `title`
-**Checkout columns:** `checkedOutByName`, `checkedOutByEmail`, `checkedOutDate` (these will be automatically added by the Apps Script if they don't exist)
+**Required columns:** `id`, `title`.
+**Checkout columns:** `checkedOutByName`, `checkedOutByEmail`, `checkedOutDate` (these will be automatically added by the Apps Script if they don't exist).
 
 The `id` column must contain unique identifiers for each book. When you check out or return books through the app, the checkout columns will be automatically updated in Google Sheets, making the status visible to all users.

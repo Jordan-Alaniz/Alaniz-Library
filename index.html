@@ -950,18 +950,7 @@
           normalized.id = uid();
         }
         // Convert checkout fields to checkedOut object format
-        if (normalized.checkedOutByName || normalized.checkedOutByEmail || normalized.checkedOutDate) {
-          normalized.checkedOut = {
-            byName: normalized.checkedOutByName || '',
-            byEmail: normalized.checkedOutByEmail || '',
-            date: normalized.checkedOutDate || ''
-          };
-          // Remove the individual fields
-          delete normalized.checkedOutByName;
-          delete normalized.checkedOutByEmail;
-          delete normalized.checkedOutDate;
-        }
-        return normalized;
+        return convertCheckoutFields(normalized);
       });
     }
 
@@ -969,17 +958,17 @@
     function convertCheckoutFields(book) {
       // Convert checkout fields to checkedOut object format
       if (book.checkedOutByName || book.checkedOutByEmail || book.checkedOutDate) {
-        return {
-          ...book,
-          checkedOut: {
-            byName: book.checkedOutByName || '',
-            byEmail: book.checkedOutByEmail || '',
-            date: book.checkedOutDate || ''
-          },
-          checkedOutByName: undefined,
-          checkedOutByEmail: undefined,
-          checkedOutDate: undefined
+        const result = { ...book };
+        result.checkedOut = {
+          byName: book.checkedOutByName || '',
+          byEmail: book.checkedOutByEmail || '',
+          date: book.checkedOutDate || ''
         };
+        // Remove the individual fields
+        delete result.checkedOutByName;
+        delete result.checkedOutByEmail;
+        delete result.checkedOutDate;
+        return result;
       }
       return book;
     }
