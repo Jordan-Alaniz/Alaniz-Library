@@ -1107,12 +1107,12 @@
           action: action, // 'checkout' or 'return'
           byName: byName || '',
           byEmail: byEmail || '',
-          date: date || new Date().toISOString()
+          date: action === 'checkout' ? (date || new Date().toISOString()) : (date || '')
         };
         
         const response = await fetch(GOOGLE_SHEET_URL, {
           method: 'POST',
-          mode: 'no-cors', // Google Apps Script requires no-cors
+          mode: 'no-cors', // Used to avoid CORS preflight issues
           headers: {
             'Content-Type': 'application/json'
           },

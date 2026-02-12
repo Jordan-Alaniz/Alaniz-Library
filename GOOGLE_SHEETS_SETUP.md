@@ -102,8 +102,10 @@ This method creates a web app that bypasses CORS restrictions and works reliably
        if (action === 'checkout') {
          sheet.getRange(rowIndex, checkedOutByNameIndex + 1).setValue(params.byName || '');
          sheet.getRange(rowIndex, checkedOutByEmailIndex + 1).setValue(params.byEmail || '');
+         // Use provided date or generate current timestamp if not provided
          sheet.getRange(rowIndex, checkedOutDateIndex + 1).setValue(params.date || new Date().toISOString());
        } else if (action === 'return') {
+         // Clear all checkout fields on return
          sheet.getRange(rowIndex, checkedOutByNameIndex + 1).setValue('');
          sheet.getRange(rowIndex, checkedOutByEmailIndex + 1).setValue('');
          sheet.getRange(rowIndex, checkedOutDateIndex + 1).setValue('');
